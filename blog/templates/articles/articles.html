@@ -1,0 +1,21 @@
+{% for arti in data %}
+    <div class="articulos">
+        {% if arti.image != 'null' and arti.image|length >= 1 %}
+            <img src="{{ arti.image.url }}" alt="Error" class="Imagen_arti" />
+        {% endif %}
+
+        <h1 class = "subtitulo"> {{arti.title}} </h1>
+        <p> 
+            {% for category in arti.categories.all %}
+                <a href="{% url 'category' category.id %}" > {{ category.name }} </a>
+                
+                {% if forloop.counter < arti.categories.all|length %}
+                    {{ '-' }}
+                {% endif %}
+            {% endfor %}
+        </p>
+        <h1 class = "subtitulo"> {{arti.content|safe}}  {{arti.created_at}} </h1>
+        <h1 class = "user"> {{arti.user}} </h1>
+    </div>
+    <hr/>
+{% endfor %}

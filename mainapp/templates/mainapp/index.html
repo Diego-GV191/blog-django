@@ -1,0 +1,23 @@
+{% extends 'layout/layout.html' %}
+
+{% block content %}
+{{ data }}
+
+<br>
+<br>
+
+{% if user.email %}
+    <a> bienvenido, {{ user.first_name }} </a>
+{% endif %}
+
+<div class="alert">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="warning">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+{% endblock %}
